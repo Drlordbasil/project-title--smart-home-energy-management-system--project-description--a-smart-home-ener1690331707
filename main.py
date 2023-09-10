@@ -1,5 +1,6 @@
 import time
 
+
 class SmartHomeEnergyManagementSystem:
     def __init__(self):
         self.devices = {}
@@ -24,7 +25,8 @@ class SmartHomeEnergyManagementSystem:
         for device_name, device in self.devices.items():
             if device['status'] == 'on':
                 device['power_usage'] += 1
-                self.energy_data[device_name].append((time.time(), device['power_usage']))
+                self.energy_data[device_name].append(
+                    (time.time(), device['power_usage']))
 
     def get_energy_usage(self, device_name):
         return self.energy_data[device_name]
@@ -45,6 +47,7 @@ class SmartHomeEnergyManagementSystem:
         for device_name, device in self.devices.items():
             if 'budget' in device and device['power_usage'] > device['budget']:
                 print(f"Alert: {device_name} exceeded energy budget!")
+
 
 # Usage example
 system = SmartHomeEnergyManagementSystem()
